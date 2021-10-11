@@ -17,38 +17,37 @@ export default class Camera
         
         // Set up
         this.mode = 'debug' // defaultCamera \ debugCamera
+        
+        this.setInstance()
+        this.setModes()
         if(this.debug)
         {
             this.debugFolder = this.debug.addFolder({
                 title: 'controls',
                 expanded: true
             })
-            this.debugFolder.addInput(parameters, 'autorotate')
-                .on('change', () => this.modes.debug.orbitControls.autoRotate = parameters.autorotate)
+            this.debugFolder.addInput(this.parameters, 'autorotate').on('change', () => this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate)
         }
-
-        this.setInstance()
-        this.setModes()
     }
-
+    
     setInstance()
     {
         // Set up
         this.instance = new THREE.PerspectiveCamera(25, this.config.width / this.config.height, 0.1, 150)
         this.instance.rotation.reorder('YXZ')
-
+        
         this.scene.add(this.instance)
     }
-
+    
     setModes()
     {
         this.modes = {}
-
+        
         // Default
         this.modes.default = {}
         this.modes.default.instance = this.instance.clone()
         this.modes.default.instance.rotation.reorder('YXZ')
-
+        
         // Debug
         this.modes.debug = {}
         this.modes.debug.instance = this.instance.clone()
@@ -62,15 +61,15 @@ export default class Camera
         this.modes.debug.orbitControls.zoomSpeed = 0.5
         this.modes.debug.orbitControls.enableDamping = true
         this.modes.debug.orbitControls.enablePan = false
-        const parameters = {
+        this.parameters = {
             autorotate: true,
         }
-        this.modes.debug.orbitControls.autoRotate = parameters.autorotate
+        this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate
         this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5) - 0.01
         this.modes.debug.orbitControls.update()
     }
-
-
+    
+    
     resize()
     {
         this.instance.aspect = this.config.width / this.config.height
