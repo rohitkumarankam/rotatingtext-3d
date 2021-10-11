@@ -14,7 +14,7 @@ export default class Camera
         this.sizes = this.experience.sizes
         this.targetElement = this.experience.targetElement
         this.scene = this.experience.scene
-
+        
         // Set up
         this.mode = 'debug' // defaultCamera \ debugCamera
         if(this.debug)
@@ -23,6 +23,8 @@ export default class Camera
                 title: 'controls',
                 expanded: true
             })
+            this.debugFolder.addInput(parameters, 'autorotate')
+                .on('change', () => this.modes.debug.orbitControls.autoRotate = parameters.autorotate)
         }
 
         this.setInstance()
@@ -64,8 +66,6 @@ export default class Camera
             autorotate: true,
         }
         this.modes.debug.orbitControls.autoRotate = parameters.autorotate
-        this.debugFolder.addInput(parameters, 'autorotate')
-            .on('change', () => this.modes.debug.orbitControls.autoRotate = parameters.autorotate)
         this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5) - 0.01
         this.modes.debug.orbitControls.update()
     }
