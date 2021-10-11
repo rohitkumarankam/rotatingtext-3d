@@ -39,6 +39,7 @@ export default class World
         
 
         // this.scene.add(cube)
+        this.scene.color = new THREE.Color(0xff00ff)
     }
     setText()
     {

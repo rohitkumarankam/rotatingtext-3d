@@ -20,11 +20,17 @@ export default class Renderer
 
         this.setInstance()
         this.setPostProcess()
+        if(this.debug)
+        {
+            this.debug.addInput(this.parameters, 'bgcolor', {view: 'color',}).on('change',()=>{this.instance.setClearColor(this.parameters.bgcolor,1)} )
+        }
     }
 
     setInstance()
     {
-        this.clearColor = '#010101'
+        this.parameters = {
+            bgcolor: 0x0f0a28,
+        }
 
         // Renderer
         this.instance = new THREE.WebGLRenderer({
@@ -38,7 +44,7 @@ export default class Renderer
         this.instance.domElement.style.height = '100%'
 
         // this.instance.setClearColor(0x414141, 1)
-        this.instance.setClearColor(this.clearColor, 1)
+        this.instance.setClearColor(this.parameters.bgcolor, 1)
         this.instance.setSize(this.config.width, this.config.height)
         this.instance.setPixelRatio(this.config.pixelRatio)
 

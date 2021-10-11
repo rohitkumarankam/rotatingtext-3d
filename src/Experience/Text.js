@@ -26,7 +26,7 @@ export default class Text
     setModel()
     {
         this.parameters = {
-            color: 0xBD00FF,
+            color: 0xcf00ff,
         }
         const loader = new FontLoader()
         this.font = loader.load(
