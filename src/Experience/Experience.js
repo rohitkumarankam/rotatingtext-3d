@@ -129,6 +129,7 @@ export default class Experience
         {
             this.update()
         })
+        window.onhashchange = () => { if(window.location.href.includes("#debug")){window.location.reload()} }
     }
 
     resize()
