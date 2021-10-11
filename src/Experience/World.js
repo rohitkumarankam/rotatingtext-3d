@@ -34,6 +34,7 @@ export default class World
         })
 
         cube.position.setY(0.5)
+        
 
         this.scene.add(cube)        
     }

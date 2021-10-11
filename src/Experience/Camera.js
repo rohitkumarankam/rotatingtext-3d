@@ -17,6 +17,13 @@ export default class Camera
 
         // Set up
         this.mode = 'debug' // defaultCamera \ debugCamera
+        if(this.debug)
+        {
+            this.debugFolder = this.debug.addFolder({
+                title: 'controls',
+                expanded: true
+            })
+        }
 
         this.setInstance()
         this.setModes()
@@ -50,10 +57,16 @@ export default class Camera
         this.modes.debug.orbitControls.enabled = this.modes.debug.active
         this.modes.debug.orbitControls.screenSpacePanning = true
         this.modes.debug.orbitControls.enableKeys = false
-        this.modes.debug.orbitControls.zoomSpeed = 0.25
+        this.modes.debug.orbitControls.zoomSpeed = 0.5
         this.modes.debug.orbitControls.enableDamping = true
-        this.modes.debug.orbitControls.autoRotate = true
-        this.modes.debug.orbitControls.maxPolarAngle = Math.PI * 0.5
+        this.modes.debug.orbitControls.enablePan = false
+        const parameters = {
+            autorotate: true,
+        }
+        this.modes.debug.orbitControls.autoRotate = parameters.autorotate
+        this.debugFolder.addInput(parameters, 'autorotate')
+            .on('change', () => this.modes.debug.orbitControls.autoRotate = parameters.autorotate)
+        this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5) - 0.01
         this.modes.debug.orbitControls.update()
     }
 
