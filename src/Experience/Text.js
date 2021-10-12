@@ -14,12 +14,12 @@ export default class Text
 
         if(this.debug)
         {
-            this.debugFolder = this.debug.addFolder({
-                title: 'text',
-                expanded: true
-            })
-            this.debugFolder.addInput(this.parameters, 'color', {view: 'color'})
-            .on('change', () => {this.text.material.color = new THREE.Color(this.parameters.color)})
+            // this.debugFolder = this.debug.addFolder({
+            //     title: 'text',
+            //     expanded: true
+            // })
+            // this.debugFolder.addInput(this.parameters, 'color', {view: 'color'})
+            // .on('change', () => {this.text.material.color = new THREE.Color(this.parameters.color)})
         }
     }
     setModel()
@@ -55,6 +55,7 @@ export default class Text
                 this.mat= new THREE.MeshNormalMaterial()
                 this.text = new THREE.Mesh(textGeometry, this.mat)
                 // this.text.position.setY(1.5)
+                // this.text.rotateY(-Math.PI * 0.1)
                 this.scene.add(this.text)
             }
         )

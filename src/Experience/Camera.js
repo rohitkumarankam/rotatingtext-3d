@@ -22,11 +22,11 @@ export default class Camera
         this.setModes()
         if(this.debug)
         {
-            this.debugFolder = this.debug.addFolder({
-                title: 'controls',
-                expanded: true
-            })
-            this.debugFolder.addInput(this.parameters, 'autorotate').on('change', () => this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate)
+            // this.debugFolder = this.debug.addFolder({
+            //     title: 'controls',
+            //     expanded: true
+            // })
+            // this.debugFolder.addInput(this.parameters, 'autorotate').on('change', () => this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate)
         }
     }
     
@@ -55,17 +55,17 @@ export default class Camera
         this.modes.debug.instance.position.set(0, 0, 12)
         
         this.modes.debug.orbitControls = new OrbitControls(this.modes.debug.instance, this.targetElement)
-        this.modes.debug.orbitControls.enabled = this.modes.debug.active
+        this.modes.debug.orbitControls.enabled = false//this.modes.debug.active
         this.modes.debug.orbitControls.screenSpacePanning = true
         this.modes.debug.orbitControls.enableKeys = false
         this.modes.debug.orbitControls.zoomSpeed = 0.5
         this.modes.debug.orbitControls.enableDamping = true
         this.modes.debug.orbitControls.enablePan = false
-        this.parameters = {
-            autorotate: true,
-        }
-        this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate
-        this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5) - 0.01
+        // this.parameters = {
+        //     autorotate: false,
+        // }
+        // this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate
+        // this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5)
         this.modes.debug.orbitControls.update()
     }
     
@@ -91,6 +91,9 @@ export default class Camera
         this.instance.position.copy(this.modes[this.mode].instance.position)
         this.instance.quaternion.copy(this.modes[this.mode].instance.quaternion)
         this.instance.updateMatrixWorld() // To be used in projection
+        // this.instance.position.setY(5* Math.sin(this.time.elapsed/1000))
+        this.modes.debug.instance.position.setY(10 * Math.cos(this.time.elapsed * 0.001))
+        this.modes.debug.instance.position.setX(7 * Math.sin(this.time.elapsed * 0.001))
     }
 
     destroy()
