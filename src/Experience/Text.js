@@ -52,8 +52,7 @@ export default class Text
                     textGeometry.boundingBox.max.y * 1,
                     - textGeometry.boundingBox.max.z * 0.5,
                 )
-                this.textMaterial = new THREE.MeshBasicMaterial({color: this.parameters.color, wireframe: true})
-                this.mat= new THREE.MeshMatcapMaterial({matcap: this.resources.items.matcapTexture})
+                this.mat= new THREE.MeshNormalMaterial()
                 this.text = new THREE.Mesh(textGeometry, this.mat)
                 // this.text.position.setY(1.5)
                 this.scene.add(this.text)

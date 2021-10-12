@@ -11,12 +11,12 @@ export default class World
         this.scene = this.experience.scene
         this.resources = this.experience.resources
         
+        this.setText()
         this.resources.on('groupEnd', (_group) =>
         {
             if(_group.name === 'base')
             {
                 this.setDummy()
-                this.setText()
             }
         })
     }
