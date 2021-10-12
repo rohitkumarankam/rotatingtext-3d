@@ -2,7 +2,6 @@ import Experience from "./Experience.js"
 import * as THREE from 'three'
 import { FontLoader } from './Utils/FontLoader.js'
 import { TextGeometry } from './Utils/TextGeometry.js'
-
 export default class Text
 {
     constructor()
@@ -28,24 +27,25 @@ export default class Text
         this.parameters = {
             color: 0xcf00ff,
         }
+        var url = '/assets/helvetiker_regular.typeface.json'
         const loader = new FontLoader()
         this.font = loader.load(
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/helvetiker_bold.typeface.json',
+            url,
             (font) =>
             {
                 const textGeometry = new TextGeometry(
                     ` ROHIT\nKUMAR\nANKAM`,
                     {
                         font: font,
-                        size: 2,
-                        height: 0.75,
-                        curveSegments: 3,
-                    // bevelEnabled: true,
-                    // bevelThickness: 0.02,
-                    // bevelSize: 0.02,
-                    // bevelOffset: 0,
-                    // bevelSegments: 5,
-                })
+                        size: 0.5,
+                        height: 0.1,
+                        curveSegments: 12,
+                        bevelEnabled: true,
+                        bevelThickness: 0.01,
+                        bevelSize: 0.02,
+                        bevelOffset: 0,
+                        bevelSegments: 10,
+                    })
                 textGeometry.computeBoundingBox()
                 textGeometry.translate(
                     - textGeometry.boundingBox.max.x * 0.5,
@@ -53,7 +53,8 @@ export default class Text
                     - textGeometry.boundingBox.max.z * 0.5,
                 )
                 this.textMaterial = new THREE.MeshBasicMaterial({color: this.parameters.color, wireframe: true})
-                this.text = new THREE.Mesh(textGeometry, this.textMaterial)
+                this.mat= new THREE.MeshMatcapMaterial({matcap: this.resources.items.matcapTexture})
+                this.text = new THREE.Mesh(textGeometry, this.mat)
                 // this.text.position.setY(1.5)
                 this.scene.add(this.text)
             }

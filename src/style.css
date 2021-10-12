@@ -9,6 +9,7 @@ html,
 body
 {
     overflow: hidden;
+    background-color: #0f0a28;
 }
 
 .experience
@@ -16,4 +17,12 @@ body
     position: fixed;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
+}
+.notice
+{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    color: #fff;
 }
