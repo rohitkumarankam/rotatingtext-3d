@@ -10,6 +10,7 @@ export default class World
         this.config = this.experience.config
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.time = this.experience.time
         
         this.setText()
         this.resources.on('groupEnd', (_group) =>
@@ -22,23 +23,7 @@ export default class World
     }
 
     setDummy()
-    {   
-        // const texture = this.resources.items.baked1
-        // texture.flipY = false
-        // const material = new THREE.MeshBasicMaterial({map:texture})
-        // const cube = new THREE.Mesh(
-        //     new THREE.BoxGeometry(1, 1, 1),
-        //     new THREE.MeshBasicMaterial({ map: this.resources.items.lennaTexture })
-        // )
-        // this.scene.add(this.resources.items.path.scene)
-        // this.resources.items.path.scene.traverse((child)=>{
-        //     child.material = material
-        // })
-
-        // cube.position.setY(0.5)
-        
-
-        // this.scene.add(cube)
+    {
         this.scene.color = new THREE.Color(0xff00ff)
     }
     setText()
@@ -52,6 +37,8 @@ export default class World
 
     update()
     {
+        if(this.text.text)
+            this.text.text.lookAt(new THREE.Vector3(7 * Math.sin(this.time.elapsed * 0.001),10 * Math.cos(this.time.elapsed * 0.001),12))
     }
 
     destroy()

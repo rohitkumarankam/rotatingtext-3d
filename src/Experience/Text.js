@@ -46,22 +46,15 @@ export default class Text
                         bevelOffset: 0,
                         bevelSegments: 10,
                     })
-                textGeometry.computeBoundingBox()
-                textGeometry.translate(
-                    - textGeometry.boundingBox.max.x * 0.5,
-                    textGeometry.boundingBox.max.y * 1,
-                    - textGeometry.boundingBox.max.z * 0.5,
-                )
+                textGeometry.center()
                 this.mat= new THREE.MeshNormalMaterial()
                 this.text = new THREE.Mesh(textGeometry, this.mat)
-                // this.text.position.setY(1.5)
-                // this.text.rotateY(-Math.PI * 0.1)
-                this.scene.add(this.text)
+                this.help = new THREE.AxesHelper()
+                this.scene.add(this.text,this.help)
             }
         )
     }
     update()
     {
-        this.setModel()
     }
 }

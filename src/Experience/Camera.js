@@ -92,8 +92,8 @@ export default class Camera
         this.instance.quaternion.copy(this.modes[this.mode].instance.quaternion)
         this.instance.updateMatrixWorld() // To be used in projection
         // this.instance.position.setY(5* Math.sin(this.time.elapsed/1000))
-        this.modes.debug.instance.position.setY(10 * Math.cos(this.time.elapsed * 0.001))
-        this.modes.debug.instance.position.setX(7 * Math.sin(this.time.elapsed * 0.001))
+        // this.modes.debug.instance.position.setY(10 * Math.cos(this.time.elapsed * 0.001))
+        // this.modes.debug.instance.position.setX(7 * Math.sin(this.time.elapsed * 0.001))
     }
 
     destroy()
