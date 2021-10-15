@@ -49,8 +49,7 @@ export default class Text
                 textGeometry.center()
                 this.mat= new THREE.MeshNormalMaterial()
                 this.text = new THREE.Mesh(textGeometry, this.mat)
-                this.help = new THREE.AxesHelper()
-                this.scene.add(this.text,this.help)
+                this.scene.add(this.text)
             }
         )
     }
