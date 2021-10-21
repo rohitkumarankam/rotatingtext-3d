@@ -1,5 +1,7 @@
 # 3d Rotating Text (Three.js)
 
+* [link](https://rotatingtext-3d.rka.li/)
+
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:

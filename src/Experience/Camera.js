@@ -55,17 +55,14 @@ export default class Camera
         this.modes.debug.instance.position.set(0, 0, 15)
         
         this.modes.debug.orbitControls = new OrbitControls(this.modes.debug.instance, this.targetElement)
-        this.modes.debug.orbitControls.enabled = false//this.modes.debug.active
-        this.modes.debug.orbitControls.screenSpacePanning = true
+        this.modes.debug.orbitControls.enabled = true//this.modes.debug.active
+        this.modes.debug.orbitControls.screenSpacePanning = false
         this.modes.debug.orbitControls.enableKeys = false
         this.modes.debug.orbitControls.zoomSpeed = 0.5
         this.modes.debug.orbitControls.enableDamping = true
         this.modes.debug.orbitControls.enablePan = false
-        // this.parameters = {
-        //     autorotate: false,
-        // }
-        // this.modes.debug.orbitControls.autoRotate = this.parameters.autorotate
-        // this.modes.debug.orbitControls.maxPolarAngle = (Math.PI * 0.5)
+        this.modes.debug.orbitControls.maxAzimuthAngle = 0
+        this.modes.debug.orbitControls.minAzimuthAngle = 0
         this.modes.debug.orbitControls.update()
     }
     
