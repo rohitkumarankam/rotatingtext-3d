@@ -1,6 +1,4 @@
-# Portfolio Website
-
-🚧 This Website is under construction
+# 3d Rotating Text (Three.js)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
